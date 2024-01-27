@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public bool isRunning = false;
     public bool isPaused = false;
     public bool isAlive = true;
+
     //run speed/time
     public float RunSpeed;
     //public float RunTime;
@@ -31,9 +32,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isAlive)
         {
-            Vector3 forwardMovement = transform.forward * RunSpeed * Time.fixedDeltaTime;
+/*            Vector3 forwardMovement = transform.forward * RunSpeed * Time.fixedDeltaTime;*/
             Vector3 horizontalMovement = transform.right * horizontalInput * HorizontalSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + forwardMovement + horizontalMovement);
+            rb.MovePosition(rb.position + horizontalMovement);
         }
     }
     
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
         float playerHeight = GetComponent<Collider>().bounds.size.y;
         bool IsGrounded = Physics.Raycast(transform.position, Vector3.down, (playerHeight / 2) + 0.1f, GroundMask);
+
         if (Input.GetKeyDown(KeyCode.Space) && isAlive && IsGrounded == true)
         {
             Jump();
