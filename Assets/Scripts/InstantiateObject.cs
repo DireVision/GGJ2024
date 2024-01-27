@@ -11,12 +11,13 @@ public class InstantiateObject : MonoBehaviour
 	float L2PosX = 0.0f; // Lane 2 x-pos of spawner
 	float L3PosX = 3.33f; // Lane 3 x-pos of spawner
 	float LPosZ = 50f; // All lanes z-pos of spawner
-	float LPosY = 5f;
+	float LPosY_Upper = 5f;
+	float LPosY_Lower = 1f;
 
 	int maxObjRange = 3;
+	public int OrbChanceInRangeOf = 15;
 	int randomNumber1, randomNumber2, randomNumber3;
-	public int OrbChanceInRangeOf = 2;
-	public float timer = 2.0f;
+	public float timer = 3f;
 
 	// Update is called once per frame
 	void Update()
@@ -25,9 +26,14 @@ public class InstantiateObject : MonoBehaviour
 		timer -= dt;
 		Debug.Log(timer);
 
-		if (timer <= 0.0f) {
-			RandomInstatiate();
-			InstantiateUpper();
+		if (timer > 1.1f && timer < 1.105f)
+		{
+			InstantiateLowerOrbs();
+		}
+
+		if (timer <= 0.1f) {
+			InstantiateObjects();
+			InstantiateUpperOrbs();
 			dt = 0.0f;
 			timer = 2.0f;
 		}
@@ -40,7 +46,38 @@ public class InstantiateObject : MonoBehaviour
 		}
 	}
 
-	void RandomInstatiate()
+	void InstantiateLowerOrbs()
+	{
+		randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
+		if (randomNumber1 == 0)
+		{
+			Instantiate(PointOrb, new Vector3(L1PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+		}
+		if (randomNumber1 == 1)
+		{
+			Instantiate(HealthOrb, new Vector3(L1PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+		}
+		randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
+		if (randomNumber1 == 0)
+		{
+			Instantiate(PointOrb, new Vector3(L2PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+		}
+		if (randomNumber1 == 1)
+		{
+			Instantiate(HealthOrb, new Vector3(L2PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+		}
+		randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
+		if (randomNumber1 == 0)
+		{
+			Instantiate(PointOrb, new Vector3(L3PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+		}
+		if (randomNumber1 == 1)
+		{
+			Instantiate(HealthOrb, new Vector3(L3PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+		}
+	}
+
+	void InstantiateObjects()
 	{
 		int checkNumber = 0;
 
@@ -87,7 +124,7 @@ public class InstantiateObject : MonoBehaviour
 		}
 	}
 
-	void InstantiateUpper()
+	void InstantiateUpperOrbs()
 	{
 		// If Lane 1 did not spawn HighWall, roll if collectible is spanwed
 		if (randomNumber1 != 0)
@@ -95,11 +132,11 @@ public class InstantiateObject : MonoBehaviour
 			randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
 			if (randomNumber1 == 0)
 			{
-				Instantiate(PointOrb, new Vector3(L1PosX, LPosY, LPosZ), Quaternion.identity);
+				Instantiate(PointOrb, new Vector3(L1PosX, LPosY_Upper, LPosZ), Quaternion.identity);
 			}
 			if (randomNumber1 == 1)
 			{
-				Instantiate(HealthOrb, new Vector3(L1PosX, LPosY, LPosZ), Quaternion.identity);
+				Instantiate(HealthOrb, new Vector3(L1PosX, LPosY_Upper, LPosZ), Quaternion.identity);
 			}
 		}
 
@@ -109,11 +146,11 @@ public class InstantiateObject : MonoBehaviour
 			randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
 			if (randomNumber1 == 0)
 			{
-				Instantiate(PointOrb, new Vector3(L2PosX, LPosY, LPosZ), Quaternion.identity);
+				Instantiate(PointOrb, new Vector3(L2PosX, LPosY_Upper, LPosZ), Quaternion.identity);
 			}
 			if (randomNumber1 == 1)
 			{
-				Instantiate(HealthOrb, new Vector3(L2PosX, LPosY, LPosZ), Quaternion.identity);
+				Instantiate(HealthOrb, new Vector3(L2PosX, LPosY_Upper, LPosZ), Quaternion.identity);
 			}
 		}
 
@@ -123,11 +160,11 @@ public class InstantiateObject : MonoBehaviour
 			randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
 			if (randomNumber1 == 0)
 			{
-				Instantiate(PointOrb, new Vector3(L3PosX, LPosY, LPosZ), Quaternion.identity);
+				Instantiate(PointOrb, new Vector3(L3PosX, LPosY_Upper, LPosZ), Quaternion.identity);
 			}
 			if (randomNumber1 == 1)
 			{
-				Instantiate(HealthOrb, new Vector3(L3PosX, LPosY, LPosZ), Quaternion.identity);
+				Instantiate(HealthOrb, new Vector3(L3PosX, LPosY_Upper, LPosZ), Quaternion.identity);
 			}
 		}
 	}

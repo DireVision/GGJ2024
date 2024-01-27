@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 20d4f77b9022eab48b4d94599ed4bf82, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.6771295, g: 0.77146876, b: 0.87563455, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 141003210}
   - component: {fileID: 141003209}
   - component: {fileID: 141003208}
-  - component: {fileID: 141003207}
   - component: {fileID: 141003206}
+  - component: {fileID: 141003207}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -1115,7 +1115,7 @@ MonoBehaviour:
   Object3: {fileID: 264196406816702946, guid: 46727b81ee9f69f42b40bee9caeb5c58, type: 3}
   PointOrb: {fileID: 2012931152716309898, guid: d220ac75507fa094ba01b90409e61072, type: 3}
   HealthOrb: {fileID: 2012931152716309898, guid: dd9b021ff861db14c808f71947cef6e6, type: 3}
-  OrbChanceRange: 2
+  OrbChanceInRangeOf: 15
   timer: 2
 --- !u!4 &1088456558
 Transform:
@@ -1455,11 +1455,11 @@ Transform:
   m_GameObject: {fileID: 2060011202}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 25}
-  m_LocalScale: {x: 0.33, y: 1, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: -53}
+  m_LocalScale: {x: 0.0011, y: 0.0033333332, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2119903332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119903328
 GameObject:
@@ -1563,7 +1563,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 78}
   m_LocalScale: {x: 300, y: 300, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2060011206}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
@@ -1582,4 +1583,3 @@ SceneRoots:
   - {fileID: 190672014}
   - {fileID: 1928390294}
   - {fileID: 2119903332}
-  - {fileID: 2060011206}
