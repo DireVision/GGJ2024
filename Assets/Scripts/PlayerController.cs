@@ -10,10 +10,10 @@ public class PlayerController : MonoBehaviour
     public bool isAlive = true;
     //run speed/time
     public float RunSpeed;
-    public float RunTime;
+    //public float RunTime;
     //velocities
     public float HorizontalSpeed;
-    public float VerticalSpeed;
+    //public float VerticalSpeed;
     float horizontalInput;
     float verticalInput;
     public Rigidbody rb;
@@ -50,8 +50,7 @@ public class PlayerController : MonoBehaviour
 
         float playerHeight = GetComponent<Collider>().bounds.size.y;
         bool IsGrounded = Physics.Raycast(transform.position, Vector3.down, (playerHeight / 2) + 0.1f, GroundMask);
-
-        if (Input.GetKeyDown(KeyCode.Space) && isAlive && IsGrounded == true) 
+        if (Input.GetKeyDown(KeyCode.Space) && isAlive && IsGrounded == true)
         {
             Jump();
         }
