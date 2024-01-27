@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    float[] lane = { -2f, 0f, 2f };
+    float[] lane = { -3f, 0f, 3f };
     float score;
     int lives;
     // Start is called before the first frame update

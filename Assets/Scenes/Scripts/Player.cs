@@ -52,14 +52,14 @@ public class Player : MonoBehaviour
             if (direction == Dir.RIGHT && currentLane != LANE.ONE)
             {
                 currentLane-=1;
-                player1.transform.position = player1.transform.position + new Vector3(-2,0,0);
-                player2.transform.position = player2.transform.position + new Vector3(-2,0,0);
+                player1.transform.position = player1.transform.position + new Vector3(-3f,0,0);
+                player2.transform.position = player2.transform.position + new Vector3(-3f,0,0);
             }
             else if (direction == Dir.LEFT && currentLane != LANE.THREE)
             {
                 currentLane+=1;
-                player1.transform.position = player1.transform.position + new Vector3(2,0,0);
-                player2.transform.position = player2.transform.position + new Vector3(2,0,0);
+                player1.transform.position = player1.transform.position + new Vector3(3f,0,0);
+                player2.transform.position = player2.transform.position + new Vector3(3f,0,0);
             }
         }
         else
@@ -67,14 +67,14 @@ public class Player : MonoBehaviour
             if (direction == Dir.LEFT && currentLane != LANE.ONE)
             {
                 currentLane-=1;
-                player1.transform.position = player1.transform.position + new Vector3(-2,0,0);
-                player2.transform.position = player2.transform.position + new Vector3(-2,0,0);
+                player1.transform.position = player1.transform.position + new Vector3(-3f,0,0);
+                player2.transform.position = player2.transform.position + new Vector3(-3f,0,0);
             }
             else if (direction == Dir.RIGHT && currentLane != LANE.THREE)
             {
                 currentLane+=1;
-                player1.transform.position = player1.transform.position + new Vector3(2,0,0);
-                player2.transform.position = player2.transform.position + new Vector3(2,0,0);
+                player1.transform.position = player1.transform.position + new Vector3(3f,0,0);
+                player2.transform.position = player2.transform.position + new Vector3(3f,0,0);
             }
         }
     }
