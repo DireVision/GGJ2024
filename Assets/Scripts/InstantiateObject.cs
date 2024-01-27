@@ -5,13 +5,18 @@ using UnityEngine;
 public class InstantiateObject : MonoBehaviour
 {
 	public GameObject Object1, Object2, Object3;
-	public float timer = 2.0f;
-	int maxRange = 3;
+	public GameObject PointOrb, HealthOrb;
 
-	[SerializeField] float L1PosX = -3.33f; // Lane 1 x-pos of spawner
-	[SerializeField] float L2PosX = 0.0f; // Lane 2 x-pos of spawner
-	[SerializeField] float L3PosX = 3.33f; // Lane 3 x-pos of spawner
+	float L1PosX = -3.33f; // Lane 1 x-pos of spawner
+	float L2PosX = 0.0f; // Lane 2 x-pos of spawner
+	float L3PosX = 3.33f; // Lane 3 x-pos of spawner
 	float LPosZ = 50f; // All lanes z-pos of spawner
+	float LPosY = 5f;
+
+	int maxObjRange = 3;
+	int randomNumber1, randomNumber2, randomNumber3;
+	public int OrbChanceInRangeOf = 2;
+	public float timer = 2.0f;
 
 	// Update is called once per frame
 	void Update()
@@ -20,38 +25,35 @@ public class InstantiateObject : MonoBehaviour
 		timer -= dt;
 		Debug.Log(timer);
 
-
-		for (int i = 0;  i < 3; i++)
-		{
-			
-		}
-
 		if (timer <= 0.0f) {
 			RandomInstatiate();
+			InstantiateUpper();
 			dt = 0.0f;
 			timer = 2.0f;
 		}
 
+		// Press space to spawn HighWall in all lanes
 		if(Input.GetKeyDown(KeyCode.Space)) {
-			Instantiate(Object1, new Vector3(-3.33f, 0f, 0f), Quaternion.identity);
-			Instantiate(Object1, new Vector3(0f, 0f, 0f), Quaternion.identity);
-			Instantiate(Object1, new Vector3(3.33f, 0f, 0f), Quaternion.identity);
+			Instantiate(Object1, new Vector3(L1PosX, 0f, LPosZ), Quaternion.identity);
+			Instantiate(Object1, new Vector3(L2PosX, 0f, LPosZ), Quaternion.identity);
+			Instantiate(Object1, new Vector3(L3PosX, 0f, LPosZ), Quaternion.identity);
 		}
 	}
 
 	void RandomInstatiate()
 	{
 		int checkNumber = 0;
-		int randomNumber1 = 0, randomNumber2 = 0, randomNumber3 = 0;
 
+		// Check if all walls impossible to beat, if yes, reroll
 		while (checkNumber == 0)
 		{
-			randomNumber1 = Random.Range(0, maxRange);
-			randomNumber2 = Random.Range(0, maxRange);
-			randomNumber3 = Random.Range(0, maxRange);
-			checkNumber = randomNumber1 + randomNumber2 + randomNumber3; // Check if all walls impossible to beat
+			randomNumber1 = Random.Range(0, maxObjRange);
+			randomNumber2 = Random.Range(0, maxObjRange);
+			randomNumber3 = Random.Range(0, maxObjRange);
+			checkNumber = randomNumber1 + randomNumber2 + randomNumber3; 
 		}
 
+		// Lane 1: Spawn Highwall, LowWall, NoWall
 		if (randomNumber1 == 0){
 			Instantiate(Object1, new Vector3(L1PosX, 0f, LPosZ), Quaternion.identity);
 		}
@@ -62,6 +64,7 @@ public class InstantiateObject : MonoBehaviour
 			Instantiate(Object3, new Vector3(L1PosX, 0f, LPosZ), Quaternion.identity);
 		}
 
+		// Lane 2: Spawn Highwall, LowWall, NoWall
 		if (randomNumber2 == 0){
 			Instantiate(Object1, new Vector3(L2PosX, 0f, LPosZ), Quaternion.identity);
 		}
@@ -72,6 +75,7 @@ public class InstantiateObject : MonoBehaviour
 			Instantiate(Object3, new Vector3(L2PosX, 0f, LPosZ), Quaternion.identity);
 		}
 
+		// Lane 3: Spawn Highwall, LowWall, NoWall
 		if (randomNumber3 == 0){
 			Instantiate(Object1, new Vector3(L3PosX, 0f, LPosZ), Quaternion.identity);
 		}
@@ -83,5 +87,48 @@ public class InstantiateObject : MonoBehaviour
 		}
 	}
 
+	void InstantiateUpper()
+	{
+		// If Lane 1 did not spawn HighWall, roll if collectible is spanwed
+		if (randomNumber1 != 0)
+		{
+			randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
+			if (randomNumber1 == 0)
+			{
+				Instantiate(PointOrb, new Vector3(L1PosX, LPosY, LPosZ), Quaternion.identity);
+			}
+			if (randomNumber1 == 1)
+			{
+				Instantiate(HealthOrb, new Vector3(L1PosX, LPosY, LPosZ), Quaternion.identity);
+			}
+		}
 
+		// If Lane 2 did not spawn HighWall, roll if collectible is spanwed
+		if (randomNumber2 != 0)
+		{
+			randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
+			if (randomNumber1 == 0)
+			{
+				Instantiate(PointOrb, new Vector3(L2PosX, LPosY, LPosZ), Quaternion.identity);
+			}
+			if (randomNumber1 == 1)
+			{
+				Instantiate(HealthOrb, new Vector3(L2PosX, LPosY, LPosZ), Quaternion.identity);
+			}
+		}
+
+		// If Lane 3 did not spawn HighWall, roll if collectible is spanwed
+		if (randomNumber3 != 0)
+		{
+			randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
+			if (randomNumber1 == 0)
+			{
+				Instantiate(PointOrb, new Vector3(L3PosX, LPosY, LPosZ), Quaternion.identity);
+			}
+			if (randomNumber1 == 1)
+			{
+				Instantiate(HealthOrb, new Vector3(L3PosX, LPosY, LPosZ), Quaternion.identity);
+			}
+		}
+	}
 }

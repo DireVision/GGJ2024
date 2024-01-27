@@ -166,7 +166,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -189,7 +189,7 @@ MonoBehaviour:
   RunSpeed: 0
   HorizontalSpeed: 0
   rb: {fileID: 0}
-  Jumpforce: 350
+  Jumpforce: 1100
   GroundMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 161937686}
   - component: {fileID: 161937685}
   m_Layer: 10
-  m_Name: Ground (1)
+  m_Name: Lane 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -413,7 +413,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.33, y: 0, z: 25}
-  m_LocalScale: {x: 0.33, y: 1, z: 5}
+  m_LocalScale: {x: 0.33, y: 1, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -461,7 +461,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -484,7 +484,7 @@ MonoBehaviour:
   RunSpeed: 0
   HorizontalSpeed: 0
   rb: {fileID: 0}
-  Jumpforce: 350
+  Jumpforce: 1100
   GroundMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 487828161}
   - component: {fileID: 487828160}
   m_Layer: 10
-  m_Name: Ground
+  m_Name: Lane 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -710,7 +710,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 25}
-  m_LocalScale: {x: 0.33, y: 1, z: 5}
+  m_LocalScale: {x: 0.33, y: 1, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1010,7 +1010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1031587650}
   - component: {fileID: 1031587649}
-  - component: {fileID: 1031587648}
+  - component: {fileID: 1031587651}
   m_Layer: 0
   m_Name: KillWall
   m_TagString: Killzone
@@ -1018,18 +1018,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1031587648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031587647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56082727562bea24c89d9118869b2772, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1031587649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1060,12 +1048,39 @@ Transform:
   m_GameObject: {fileID: 1031587647}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -100}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1031587651
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031587647}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1088456556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e311839b9f0a9554a88f7f0caed2784a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 264196406816702946, guid: 9dae5aacd0729714686f5b566ffce27b, type: 3}
+  Object1: {fileID: 264196406816702946, guid: 9dae5aacd0729714686f5b566ffce27b, type: 3}
+  Object2: {fileID: 264196406816702946, guid: 99fc115ac7c699142a2ec21e161a32e6, type: 3}
+  Object3: {fileID: 264196406816702946, guid: 46727b81ee9f69f42b40bee9caeb5c58, type: 3}
+  PointOrb: {fileID: 2012931152716309898, guid: d220ac75507fa094ba01b90409e61072, type: 3}
+  HealthOrb: {fileID: 2012931152716309898, guid: dd9b021ff861db14c808f71947cef6e6, type: 3}
+  OrbChanceRange: 2
   timer: 2
 --- !u!4 &1088456558
 Transform:
@@ -1106,7 +1126,7 @@ Transform:
   m_GameObject: {fileID: 1088456556}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 49}
+  m_LocalPosition: {x: 0, y: 0, z: 55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1173,7 +1193,7 @@ GameObject:
   - component: {fileID: 1586776739}
   - component: {fileID: 1586776738}
   m_Layer: 10
-  m_Name: Ground (2)
+  m_Name: Lane 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1261,7 +1281,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.33, y: 0, z: 25}
-  m_LocalScale: {x: 0.33, y: 1, z: 5}
+  m_LocalScale: {x: 0.33, y: 1, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1550,8 +1570,8 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 487828163}
   - {fileID: 161937688}
+  - {fileID: 487828163}
   - {fileID: 1586776741}
   - {fileID: 503504369}
   - {fileID: 1031587650}
