@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Player1Controller : MonoBehaviour
 {
     //bools
     public bool isRunning = false;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         float playerHeight = GetComponent<Collider>().bounds.size.y;
         bool IsGrounded = Physics.Raycast(transform.position, Vector3.down, (playerHeight / 2) + 0.1f, GroundMask);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isAlive && IsGrounded == true)
+        if (Input.GetKeyDown(KeyCode.W) && isAlive && IsGrounded == true)
         {
             Jump();
         }

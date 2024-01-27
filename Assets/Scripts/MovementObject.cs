@@ -20,7 +20,7 @@ public class MovementObject : MonoBehaviour
     {
         if (isAlive){
             Vector3 forwardMovement = transform.forward * MoveSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + forwardMovement);
+            rb.MovePosition(rb.position - forwardMovement);
             // Vector3 horizontalMovement = transform.right *  HorizontalSpeed * Time.fixedDeltaTime;
         }
     }
