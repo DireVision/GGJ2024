@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 {
     public GameObject player1;
     public GameObject player2;
+    public bool isInversed = true;
     
     SyncInput controlState;
     LANE currentLane;
@@ -46,18 +47,36 @@ public class Player : MonoBehaviour
 
     void MovePlayers(Dir direction)
     {
-       if (direction == Dir.LEFT && currentLane != LANE.ONE)
-       {
-        currentLane-=1;
-        player1.transform.position = player1.transform.position + new Vector3(-2,0,0);
-        player2.transform.position = player2.transform.position + new Vector3(-2,0,0);
-       }
-       else if (direction == Dir.RIGHT && currentLane != LANE.THREE)
-       {
-        currentLane+=1;
-        player1.transform.position = player1.transform.position + new Vector3(2,0,0);
-        player2.transform.position = player2.transform.position + new Vector3(2,0,0);
-       }
+        if (isInversed)
+        {
+            if (direction == Dir.RIGHT && currentLane != LANE.ONE)
+            {
+                currentLane-=1;
+                player1.transform.position = player1.transform.position + new Vector3(-2,0,0);
+                player2.transform.position = player2.transform.position + new Vector3(-2,0,0);
+            }
+            else if (direction == Dir.LEFT && currentLane != LANE.THREE)
+            {
+                currentLane+=1;
+                player1.transform.position = player1.transform.position + new Vector3(2,0,0);
+                player2.transform.position = player2.transform.position + new Vector3(2,0,0);
+            }
+        }
+        else
+        {
+            if (direction == Dir.LEFT && currentLane != LANE.ONE)
+            {
+                currentLane-=1;
+                player1.transform.position = player1.transform.position + new Vector3(-2,0,0);
+                player2.transform.position = player2.transform.position + new Vector3(-2,0,0);
+            }
+            else if (direction == Dir.RIGHT && currentLane != LANE.THREE)
+            {
+                currentLane+=1;
+                player1.transform.position = player1.transform.position + new Vector3(2,0,0);
+                player2.transform.position = player2.transform.position + new Vector3(2,0,0);
+            }
+        }
     }
 
     void Update()
