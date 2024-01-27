@@ -10,14 +10,14 @@ public class InstantiateObject : MonoBehaviour
 	float L1PosX = -3.33f; // Lane 1 x-pos of spawner
 	float L2PosX = 0.0f; // Lane 2 x-pos of spawner
 	float L3PosX = 3.33f; // Lane 3 x-pos of spawner
-	float LPosZ = 50f; // All lanes z-pos of spawner
+	float LPosZ = 55f; // All lanes z-pos of spawner
 	float LPosY_Upper = 5f;
 	float LPosY_Lower = 1f;
 
 	int maxObjRange = 3;
 	public int OrbChanceInRangeOf = 15;
 	int randomNumber1, randomNumber2, randomNumber3;
-	public float timer = 3f;
+	public float timer = 2.5f;
 
 	// Update is called once per frame
 	void Update()
