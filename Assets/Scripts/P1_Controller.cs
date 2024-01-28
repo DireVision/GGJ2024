@@ -8,29 +8,31 @@ public class Player1Controller : MonoBehaviour
 	public bool isRunning = false;
 	public bool isPaused = false;
 	public bool isAlive = true;
-
 	//run speed/time
 	public float RunSpeed;
-	//public float RunTime;
 	//velocities
 	public float HorizontalSpeed;
-	//public float VerticalSpeed;
+	//inputs
 	float horizontalInput;
 	float verticalInput;
-
+	//gravity scale
 	float gravityScale = 5f; // Change this value to accelerate/decelerate jump & fall speed
 	public static float globalGravity = -9.81f;
-
+	//rigid body
 	public Rigidbody rb;
-
+	//managers
 	public LevelManager LM;
 	public HealthManager HM;
-
+	//private
+	//jump
 	[SerializeField] private float Jumpforce = 350;
 	[SerializeField] private LayerMask GroundMask;
+	//audio
+	[SerializeField] private AudioSource jumpSoundEffect;
+	[SerializeField] private AudioSource collectionSoundEffect;
+	[SerializeField] private AudioSource obstacleSoundEffect;
 
-
-	private void Awake()
+    private void Awake()
 	{
 		rb = GetComponent<Rigidbody>();
 	}
@@ -82,6 +84,7 @@ public class Player1Controller : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.W) && isAlive && IsGrounded == true)
 		{
+			jumpSoundEffect.Play();
 			Jump();
 		}
 	}
@@ -109,18 +112,22 @@ public class Player1Controller : MonoBehaviour
 		if (other.gameObject.tag == "Obstacle")
 		{
 			Destroy(other.gameObject);
+			obstacleSoundEffect.Play();
 			LM.lives -= 1;
 			HM.TakeDamage(100 / 3);
 		}
 		if (other.gameObject.tag == "Collectible")
 		{
 			Destroy(other.gameObject);
+			collectionSoundEffect.Play();
 			LM.score += 1000;
+
 		}
 		if (other.gameObject.tag == "Healable")
 		{
 			Destroy(other.gameObject);
-			if (LM.lives < 3)
+            collectionSoundEffect.Play();
+            if (LM.lives < 3)
 			{
 				LM.lives += 1;
 				HM.Heal(100 / 3);

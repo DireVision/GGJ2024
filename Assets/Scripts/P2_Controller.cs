@@ -4,32 +4,34 @@ using UnityEngine;
 
 public class Player2Controller : MonoBehaviour
 {
-	//bools
-	public bool isRunning = false;
-	public bool isPaused = false;
-	public bool isAlive = true;
+    //bools
+    public bool isRunning = false;
+    public bool isPaused = false;
+    public bool isAlive = true;
+    //run speed/time
+    public float RunSpeed;
+    //velocities
+    public float HorizontalSpeed;
+    //inputs
+    float horizontalInput;
+    float verticalInput;
+    //gravity scale
+    float gravityScale = 5f; // Change this value to accelerate/decelerate jump & fall speed
+    public static float globalGravity = -9.81f;
+    //rigid body
+    public Rigidbody rb;
+    //managers
+    public LevelManager LM;
+    public HealthManager HM;
+    //private
+    //jump
+    [SerializeField] private float Jumpforce = 350;
+    [SerializeField] private LayerMask GroundMask;
+    //audio
+    [SerializeField] private AudioSource jumpSoundEffect;
 
-	//run speed/time
-	public float RunSpeed;
-	//public float RunTime;
-	//velocities
-	public float HorizontalSpeed;
-	//public float VerticalSpeed;
-	float horizontalInput;
-	float verticalInput;
 
-	float gravityScale = 5f; // Change this value to accelerate/decelerate jump & fall speed
-	public static float globalGravity = -9.81f;
-
-	public Rigidbody rb;
-
-	public LevelManager LM;
-
-	[SerializeField] private float Jumpforce = 350;
-	[SerializeField] private LayerMask GroundMask;
-
-
-	private void Awake()
+    private void Awake()
 	{
 		rb = GetComponent<Rigidbody>();
 	}
@@ -82,7 +84,8 @@ public class Player2Controller : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.I) && isAlive && IsGrounded == true)
 		{
-			Jump();
+            jumpSoundEffect.Play();
+            Jump();
 		}
 	}
 

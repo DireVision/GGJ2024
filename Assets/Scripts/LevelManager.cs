@@ -12,6 +12,10 @@ public class LevelManager : MonoBehaviour
     public GameObject egUI;
     public TMP_Text scoreboard;
     //public Player pg;
+
+    public AudioSource loseSoundEffect;
+
+    bool gameEnd = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +25,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lives <= 0)
+        if (lives <= 0 && gameEnd == false)
         {
             EndGame();
         }
@@ -31,6 +35,8 @@ public class LevelManager : MonoBehaviour
 
     void EndGame()
     {
+        gameEnd = true;
+        loseSoundEffect.Play();
         Time.timeScale = 0;
         egUI.SetActive(true);
     }
