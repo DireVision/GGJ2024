@@ -11,6 +11,10 @@ public class DisasterManager : MonoBehaviour
     Player player;
     [SerializeField]
     ScoreManager scoreManager;
+    [SerializeField]
+    InstantiateObject spawner;
+
+    int currentEvent = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +31,23 @@ public class DisasterManager : MonoBehaviour
                 float i = Random.Range(0.0f, 100f);
                 if (i < 50f)
                 {
-                    player.isInversed = true;
-                    timer = 10.0f;
                     isEventHappening = true;
-                    scoreManager.SetEvent("INVERSE CONTROLS!!");
+                    switch (Random.Range(0, 2))
+                    {
+                        case 1:
+                            currentEvent = 0;
+                            player.isInversed = true;
+                            timer = 10.0f;
+                            scoreManager.SetEvent("INVERSE CONTROLS!!");
+                            break;
+                        case 0:
+                            currentEvent = 1;
+                            spawner.eventHappening = true;
+                            timer = 10.0f;
+                            scoreManager.SetEvent("SENTIENT WALLS!!");
+                            break;
+                    }
+                    
                 }
                 else rerollTimer = 10.0f;
             }
@@ -42,7 +59,16 @@ public class DisasterManager : MonoBehaviour
 
         if (timer < 0.0f && isEventHappening)
         {
-            player.isInversed = false;
+            switch(currentEvent)
+            {
+                case 0:
+                    player.isInversed = false;
+                    break;
+                case 1:
+                    spawner.eventHappening = false;
+                    break;
+            }
+
             timer = 0.0f;
             scoreManager.SetEvent("");
             rerollTimer = 10.0f;

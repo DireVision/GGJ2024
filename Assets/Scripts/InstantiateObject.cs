@@ -14,6 +14,8 @@ public class InstantiateObject : MonoBehaviour
 	float LPosY_Upper = 5f;
 	float LPosY_Lower = 1f;
 
+	public bool eventHappening = false;
+
 	int maxObjRange = 3;
 	public int OrbChanceInRangeOf = 15;
 	int randomNumber1, randomNumber2, randomNumber3;
@@ -46,35 +48,49 @@ public class InstantiateObject : MonoBehaviour
 		}*/
 	}
 
-	void InstantiateLowerOrbs()
+    void InstantiateLowerOrbs()
 	{
 		randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
 		if (randomNumber1 == 0)
 		{
-			Instantiate(PointOrb, new Vector3(L1PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-		}
-		if (randomNumber1 == 1)
+			GameObject go = Instantiate(PointOrb, new Vector3(L1PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+
+			if (eventHappening)
+				go.GetComponent<MovementObject>().surpriseObstacle = true;
+
+        }
+        if (randomNumber1 == 1)
 		{
-			Instantiate(HealthOrb, new Vector3(L1PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(HealthOrb, new Vector3(L1PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 		randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
 		if (randomNumber1 == 0)
 		{
-			Instantiate(PointOrb, new Vector3(L2PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(PointOrb, new Vector3(L2PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 		if (randomNumber1 == 1)
 		{
-			Instantiate(HealthOrb, new Vector3(L2PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(HealthOrb, new Vector3(L2PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 		randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
 		if (randomNumber1 == 0)
 		{
-			Instantiate(PointOrb, new Vector3(L3PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(PointOrb, new Vector3(L3PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 		if (randomNumber1 == 1)
 		{
-			Instantiate(HealthOrb, new Vector3(L3PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(HealthOrb, new Vector3(L3PosX, LPosY_Lower, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 	}
 
 	void InstantiateObjects()
@@ -92,36 +108,54 @@ public class InstantiateObject : MonoBehaviour
 
 		// Lane 1: Spawn Highwall, LowWall, NoWall
 		if (randomNumber1 == 0){
-			Instantiate(Object1, new Vector3(L1PosX, 0f, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(Object1, new Vector3(L1PosX, 0f, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 		if (randomNumber1 == 1){
-			Instantiate(Object2, new Vector3(L1PosX, 0f, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(Object2, new Vector3(L1PosX, 0f, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 		if (randomNumber1 == 2){
-			Instantiate(Object3, new Vector3(L1PosX, 0f, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(Object3, new Vector3(L1PosX, 0f, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 
 		// Lane 2: Spawn Highwall, LowWall, NoWall
 		if (randomNumber2 == 0){
-			Instantiate(Object1, new Vector3(L2PosX, 0f, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(Object1, new Vector3(L2PosX, 0f, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 		if (randomNumber2 == 1){
-			Instantiate(Object2, new Vector3(L2PosX, 0f, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(Object2, new Vector3(L2PosX, 0f, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 		if (randomNumber2 == 2){
-			Instantiate(Object3, new Vector3(L2PosX, 0f, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(Object3, new Vector3(L2PosX, 0f, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 
 		// Lane 3: Spawn Highwall, LowWall, NoWall
 		if (randomNumber3 == 0){
-			Instantiate(Object1, new Vector3(L3PosX, 0f, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(Object1, new Vector3(L3PosX, 0f, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 		if (randomNumber3 == 1){
-			Instantiate(Object2, new Vector3(L3PosX, 0f, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(Object2, new Vector3(L3PosX, 0f, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 		if (randomNumber3 == 2){
-			Instantiate(Object3, new Vector3(L3PosX, 0f, LPosZ), Quaternion.identity);
-		}
+			GameObject go = Instantiate(Object3, new Vector3(L3PosX, 0f, LPosZ), Quaternion.identity);
+            if (eventHappening)
+                go.GetComponent<MovementObject>().surpriseObstacle = true;
+        }
 	}
 
 	void InstantiateUpperOrbs()
@@ -133,11 +167,11 @@ public class InstantiateObject : MonoBehaviour
 			if (randomNumber1 == 0)
 			{
 				Instantiate(PointOrb, new Vector3(L1PosX, LPosY_Upper, LPosZ), Quaternion.identity);
-			}
+            }
 			if (randomNumber1 == 1)
 			{
 				Instantiate(HealthOrb, new Vector3(L1PosX, LPosY_Upper, LPosZ), Quaternion.identity);
-			}
+            }
 		}
 
 		// If Lane 2 did not spawn HighWall, roll if collectible is spanwed
@@ -147,11 +181,11 @@ public class InstantiateObject : MonoBehaviour
 			if (randomNumber1 == 0)
 			{
 				Instantiate(PointOrb, new Vector3(L2PosX, LPosY_Upper, LPosZ), Quaternion.identity);
-			}
+            }
 			if (randomNumber1 == 1)
 			{
 				Instantiate(HealthOrb, new Vector3(L2PosX, LPosY_Upper, LPosZ), Quaternion.identity);
-			}
+            }
 		}
 
 		// If Lane 3 did not spawn HighWall, roll if collectible is spanwed
@@ -161,11 +195,11 @@ public class InstantiateObject : MonoBehaviour
 			if (randomNumber1 == 0)
 			{
 				Instantiate(PointOrb, new Vector3(L3PosX, LPosY_Upper, LPosZ), Quaternion.identity);
-			}
+            }
 			if (randomNumber1 == 1)
 			{
 				Instantiate(HealthOrb, new Vector3(L3PosX, LPosY_Upper, LPosZ), Quaternion.identity);
-			}
+            }
 		}
 	}
 }
