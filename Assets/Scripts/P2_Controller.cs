@@ -46,7 +46,20 @@ public class Player2Controller : MonoBehaviour
 			// Implementation of gravity with scale
 			Vector3 gravity = globalGravity * gravityScale * Vector3.up;
 			rb.AddForce(gravity, ForceMode.Acceleration);
-		}
+
+            if (rb.transform.position.x <= -1.2f)
+            {
+                rb.transform.position = SetX(rb.transform.position, -2.4f);
+            }
+            else if (rb.transform.position.x >= 2.4f)
+            {
+                rb.transform.position = SetX(rb.transform.position, 3.6f);
+            }
+            else
+            {
+                rb.transform.position = SetX(rb.transform.position, 0.6f);
+            }
+        }
 
 
 	}
@@ -81,4 +94,10 @@ public class Player2Controller : MonoBehaviour
 		vector.z = z;
 		return vector;
 	}
+
+    private Vector3 SetX(Vector3 vector, float x)
+    {
+        vector.x = x;
+        return vector;
+    }
 }
