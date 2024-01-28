@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
         egUI.SetActive(true);
     }
 
-    void ReturnToMainMenu()
+    public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("Menu");
     }
