@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 20
-  surpriseObstacle: 1
+  surpriseObstacle: 0
 --- !u!114 &863190447964333167
 MonoBehaviour:
   m_ObjectHideFlags: 0
