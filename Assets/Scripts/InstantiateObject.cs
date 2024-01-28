@@ -39,11 +39,11 @@ public class InstantiateObject : MonoBehaviour
 		}
 
 		// Press space to spawn HighWall in all lanes
-		if(Input.GetKeyDown(KeyCode.Space)) {
+/*		if(Input.GetKeyDown(KeyCode.Space)) {
 			Instantiate(Object1, new Vector3(L1PosX, 0f, LPosZ), Quaternion.identity);
 			Instantiate(Object1, new Vector3(L2PosX, 0f, LPosZ), Quaternion.identity);
 			Instantiate(Object1, new Vector3(L3PosX, 0f, LPosZ), Quaternion.identity);
-		}
+		}*/
 	}
 
 	void InstantiateLowerOrbs()
