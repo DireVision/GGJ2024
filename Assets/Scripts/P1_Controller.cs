@@ -101,7 +101,7 @@ public class Player1Controller : MonoBehaviour
 	{
 		vector.x = x;
 		return vector;
-	}
+	}	
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -114,6 +114,14 @@ public class Player1Controller : MonoBehaviour
 		{
 			Destroy(other.gameObject);
 			LM.score += 1000;
+		}
+		if (other.gameObject.tag == "Healable")
+		{
+			Destroy(other.gameObject);
+			if (LM.lives < 3)
+			{
+				LM.lives += 1;
+			}
 		}
 	}
 }

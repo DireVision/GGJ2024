@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class LevelManager : MonoBehaviour
     public float score;
     public int lives;
     public GameObject egUI;
+    public TMP_Text scoreboard;
     //public Player pg;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,8 @@ public class LevelManager : MonoBehaviour
         {
             EndGame();
         }
+        scoreboard.SetText("Score: " + score);
+
     }
 
     void EndGame()

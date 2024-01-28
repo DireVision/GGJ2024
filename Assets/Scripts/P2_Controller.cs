@@ -103,7 +103,7 @@ public class Player2Controller : MonoBehaviour
         return vector;
     }
 
-	void OnTriggerEnter(Collider other)
+	/*void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Obstacle")
 		{
@@ -115,5 +115,10 @@ public class Player2Controller : MonoBehaviour
 			Destroy(other.gameObject);
 			LM.score += 1000;
 		}
-	}
+		if (other.gameObject.tag == "Healable")
+		{
+			Destroy(other.gameObject);
+			LM.lives += 1;
+		}
+	}*/
 }
