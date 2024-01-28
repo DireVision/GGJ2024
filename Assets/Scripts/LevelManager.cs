@@ -20,7 +20,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1;
+        //loseSoundEffect = gameObject.GetComponentInChildren<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,6 +29,7 @@ public class LevelManager : MonoBehaviour
     {
         if (lives <= 0 && gameEnd == false)
         {
+            loseSoundEffect.Play();
             EndGame();
         }
         scoreboard.SetText("Score: " + score);
@@ -43,7 +45,6 @@ public class LevelManager : MonoBehaviour
     void EndGame()
     {
         gameEnd = true;
-        loseSoundEffect.Play();
         Time.timeScale = 0;
         egUI.SetActive(true);
     }
@@ -51,5 +52,10 @@ public class LevelManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void ReturnToGame()
+    {
+        SceneManager.LoadScene("Game");
     }
 }

@@ -18,8 +18,8 @@ public class MovementObject : MonoBehaviour
         check = false;
         LM = FindObjectOfType<LevelManager>();
         HM = FindObjectOfType<HealthManager>();
-        collectionSoundEffect = LM.GetComponent<AudioSource>();
-        obstacleSoundEffect = HM.GetComponent<AudioSource>();
+        obstacleSoundEffect = LM.GetComponent<AudioSource>();
+        collectionSoundEffect = HM.GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
