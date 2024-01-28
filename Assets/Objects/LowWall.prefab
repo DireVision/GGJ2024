@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 863190447964333167}
   m_Layer: 0
   m_Name: LowWall
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 20
+  surpriseObstacle: 1
 --- !u!114 &863190447964333167
 MonoBehaviour:
   m_ObjectHideFlags: 0

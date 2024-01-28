@@ -23,6 +23,8 @@ public class Player2Controller : MonoBehaviour
 
 	public Rigidbody rb;
 
+	public LevelManager LM;
+
 	[SerializeField] private float Jumpforce = 350;
 	[SerializeField] private LayerMask GroundMask;
 
@@ -100,4 +102,18 @@ public class Player2Controller : MonoBehaviour
         vector.x = x;
         return vector;
     }
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "Obstacle")
+		{
+			Destroy(other.gameObject);
+			LM.lives -= 1;
+		}
+		if (other.gameObject.tag == "Collectible")
+		{
+			Destroy(other.gameObject);
+			LM.score += 1000;
+		}
+	}
 }
