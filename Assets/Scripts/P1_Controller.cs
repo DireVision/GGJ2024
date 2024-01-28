@@ -24,6 +24,7 @@ public class Player1Controller : MonoBehaviour
 	public Rigidbody rb;
 
 	public LevelManager LM;
+	public HealthManager HM;
 
 	[SerializeField] private float Jumpforce = 350;
 	[SerializeField] private LayerMask GroundMask;
@@ -109,6 +110,7 @@ public class Player1Controller : MonoBehaviour
 		{
 			Destroy(other.gameObject);
 			LM.lives -= 1;
+			HM.TakeDamage(100 / 3);
 		}
 		if (other.gameObject.tag == "Collectible")
 		{
@@ -121,6 +123,7 @@ public class Player1Controller : MonoBehaviour
 			if (LM.lives < 3)
 			{
 				LM.lives += 1;
+				HM.Heal(100 / 3);
 			}
 		}
 	}
