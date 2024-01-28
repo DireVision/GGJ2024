@@ -11,7 +11,8 @@ public class LevelManager : MonoBehaviour
     public int lives;
     public GameObject egUI;
     public TMP_Text scoreboard;
-    //public Player pg;
+    public float difficulty = 1f;
+    float timer = 0f;
 
     public AudioSource loseSoundEffect;
 
@@ -30,6 +31,12 @@ public class LevelManager : MonoBehaviour
             EndGame();
         }
         scoreboard.SetText("Score: " + score);
+        timer += Time.deltaTime;
+
+        if (difficulty <= 2.5)
+        {
+            difficulty = 1 + (1 * (timer / 60));
+        }
 
     }
 

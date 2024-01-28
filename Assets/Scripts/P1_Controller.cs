@@ -21,16 +21,16 @@ public class Player1Controller : MonoBehaviour
 	//rigid body
 	public Rigidbody rb;
 	//managers
-	public LevelManager LM;
-	public HealthManager HM;
+	//public LevelManager LM;
+	//public HealthManager HM;
 	//private
 	//jump
 	[SerializeField] private float Jumpforce = 350;
 	[SerializeField] private LayerMask GroundMask;
 	//audio
 	[SerializeField] private AudioSource jumpSoundEffect;
-	[SerializeField] private AudioSource collectionSoundEffect;
-	[SerializeField] private AudioSource obstacleSoundEffect;
+	//[SerializeField] private AudioSource collectionSoundEffect;
+	//[SerializeField] private AudioSource obstacleSoundEffect;
 
     private void Awake()
 	{
@@ -107,7 +107,7 @@ public class Player1Controller : MonoBehaviour
 		return vector;
 	}	
 
-	void OnTriggerEnter(Collider other)
+	/*void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Obstacle")
 		{
@@ -133,5 +133,5 @@ public class Player1Controller : MonoBehaviour
 				HM.Heal(100 / 3);
 			}
 		}
-	}
+	}*/
 }

@@ -21,8 +21,8 @@ public class Player2Controller : MonoBehaviour
     //rigid body
     public Rigidbody rb;
     //managers
-    public LevelManager LM;
-    public HealthManager HM;
+    //public LevelManager LM;
+    //public HealthManager HM;
     //private
     //jump
     [SerializeField] private float Jumpforce = 350;
@@ -112,6 +112,7 @@ public class Player2Controller : MonoBehaviour
 		{
 			Destroy(other.gameObject);
 			LM.lives -= 1;
+			HM.TakeDamage(100 / 3);
 		}
 		if (other.gameObject.tag == "Collectible")
 		{
@@ -121,7 +122,11 @@ public class Player2Controller : MonoBehaviour
 		if (other.gameObject.tag == "Healable")
 		{
 			Destroy(other.gameObject);
-			LM.lives += 1;
+			if (LM.lives < 3)
+			{
+				LM.lives += 1;
+				HM.Heal(100 / 3);
+			}
 		}
 	}*/
 }

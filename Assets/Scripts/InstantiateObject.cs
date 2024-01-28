@@ -5,6 +5,9 @@ using UnityEngine;
 public class InstantiateObject : MonoBehaviour
 {
 	public GameObject Object1, Object2, Object3;
+	public GameObject Cop, Norm1, Norm2, Taxi;
+	public GameObject SUV;
+	public GameObject Sports1, Sports2;
 	public GameObject PointOrb, HealthOrb;
 
 	float L1PosX = -3.33f; // Lane 1 x-pos of spawner
@@ -54,48 +57,35 @@ public class InstantiateObject : MonoBehaviour
 		if (randomNumber1 == 0)
 		{
 			GameObject go = Instantiate(PointOrb, new Vector3(L1PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-
-			if (eventHappening)
-				go.GetComponent<MovementObject>().surpriseObstacle = true;
-
         }
         if (randomNumber1 == 1)
 		{
 			GameObject go = Instantiate(HealthOrb, new Vector3(L1PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-            if (eventHappening)
-                go.GetComponent<MovementObject>().surpriseObstacle = true;
         }
 		randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
 		if (randomNumber1 == 0)
 		{
 			GameObject go = Instantiate(PointOrb, new Vector3(L2PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-            if (eventHappening)
-                go.GetComponent<MovementObject>().surpriseObstacle = true;
         }
 		if (randomNumber1 == 1)
 		{
 			GameObject go = Instantiate(HealthOrb, new Vector3(L2PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-            if (eventHappening)
-                go.GetComponent<MovementObject>().surpriseObstacle = true;
         }
 		randomNumber1 = Random.Range(0, OrbChanceInRangeOf);
 		if (randomNumber1 == 0)
 		{
 			GameObject go = Instantiate(PointOrb, new Vector3(L3PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-            if (eventHappening)
-                go.GetComponent<MovementObject>().surpriseObstacle = true;
         }
 		if (randomNumber1 == 1)
 		{
 			GameObject go = Instantiate(HealthOrb, new Vector3(L3PosX, LPosY_Lower, LPosZ), Quaternion.identity);
-            if (eventHappening)
-                go.GetComponent<MovementObject>().surpriseObstacle = true;
         }
 	}
 
 	void InstantiateObjects()
 	{
 		int checkNumber = 0;
+		int randCar = 0;
 
 		// Check if all walls impossible to beat, if yes, reroll
 		while (checkNumber == 0)
@@ -113,6 +103,28 @@ public class InstantiateObject : MonoBehaviour
                 go.GetComponent<MovementObject>().surpriseObstacle = true;
         }
 		if (randomNumber1 == 1){
+			randCar = Random.Range(0, 6);
+			switch (randCar)
+            {
+				case 0:
+					Object2 = Cop;
+					break;
+				case 1:
+					Object2 = Norm1;
+					break;
+				case 2:
+					Object2 = Norm2;
+					break;
+				case 3:
+					Object2 = Taxi;
+					break;
+				case 4:
+					Object2 = Sports1;
+					break;
+				case 5:
+					Object2 = Sports2;
+					break;
+			}
 			GameObject go = Instantiate(Object2, new Vector3(L1PosX, 0f, LPosZ), Quaternion.identity);
             if (eventHappening)
                 go.GetComponent<MovementObject>().surpriseObstacle = true;
@@ -130,6 +142,28 @@ public class InstantiateObject : MonoBehaviour
                 go.GetComponent<MovementObject>().surpriseObstacle = true;
         }
 		if (randomNumber2 == 1){
+			randCar = Random.Range(0, 6);
+			switch (randCar)
+			{
+				case 0:
+					Object2 = Cop;
+					break;
+				case 1:
+					Object2 = Norm1;
+					break;
+				case 2:
+					Object2 = Norm2;
+					break;
+				case 3:
+					Object2 = Taxi;
+					break;
+				case 4:
+					Object2 = Sports1;
+					break;
+				case 5:
+					Object2 = Sports2;
+					break;
+			}
 			GameObject go = Instantiate(Object2, new Vector3(L2PosX, 0f, LPosZ), Quaternion.identity);
             if (eventHappening)
                 go.GetComponent<MovementObject>().surpriseObstacle = true;
@@ -147,6 +181,29 @@ public class InstantiateObject : MonoBehaviour
                 go.GetComponent<MovementObject>().surpriseObstacle = true;
         }
 		if (randomNumber3 == 1){
+			randCar = Random.Range(0, 6);
+			switch (randCar)
+			{
+				case 0:
+					Object2 = Cop;
+					break;
+				case 1:
+					Object2 = Norm1;
+					break;
+				case 2:
+					Object2 = Norm2;
+					break;
+				case 3:
+					Object2 = Taxi;
+					break;
+				case 4:
+					Object2 = Sports1;
+					break;
+				case 5:
+					Object2 = Sports2;
+					break;
+			}
+
 			GameObject go = Instantiate(Object2, new Vector3(L3PosX, 0f, LPosZ), Quaternion.identity);
             if (eventHappening)
                 go.GetComponent<MovementObject>().surpriseObstacle = true;
