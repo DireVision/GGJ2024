@@ -24,7 +24,7 @@ public class InstantiateObject : MonoBehaviour
 	{
 		float dt = Time.deltaTime;
 		timer -= dt;
-		Debug.Log(timer);
+		//Debug.Log(timer);
 
 		if (timer > 1.1f && timer < 1.105f)
 		{

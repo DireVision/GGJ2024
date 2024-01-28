@@ -53,14 +53,14 @@ public class Player : MonoBehaviour
             if (direction == Dir.RIGHT && currentLane != LANE.ONE)
             {
                 currentLane-=1;
-                player1.transform.position = player1.transform.position + new Vector3(displace,0,0);
-                player2.transform.position = player2.transform.position + new Vector3(displace,0,0);
+                player1.transform.position = player1.transform.position + new Vector3(-displace,0,0);
+                player2.transform.position = player2.transform.position + new Vector3(-displace,0,0);
             }
             else if (direction == Dir.LEFT && currentLane != LANE.THREE)
             {
                 currentLane+=1;
-                player1.transform.position = player1.transform.position + new Vector3(-displace,0,0);
-                player2.transform.position = player2.transform.position + new Vector3(-displace,0,0);
+                player1.transform.position = player1.transform.position + new Vector3(displace,0,0);
+                player2.transform.position = player2.transform.position + new Vector3(displace,0,0);
             }
         }
         else
@@ -80,8 +80,18 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Update()
+    void GetKeyPresses()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("Player1 Interacted!");
+        }
+        
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Debug.Log("Player2 Interacted!");
+        }
+
         if (Input.GetKeyDown(KeyCode.A)) 
         {
             controlState.player1 = Dir.LEFT;
@@ -114,8 +124,13 @@ public class Player : MonoBehaviour
                 controlState.timeToConfirm = 0.25f;
             }
         }
+    }
 
-        if (controlState.player1 == controlState.player2)
+    void Update()
+    {
+        GetKeyPresses();
+
+        if (controlState.player1 == controlState.player2)   //Both same direction
         {
             if (controlState.player1 == Dir.LEFT)
             {

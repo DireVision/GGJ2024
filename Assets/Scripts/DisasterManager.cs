@@ -6,14 +6,15 @@ public class DisasterManager : MonoBehaviour
 {
     bool isEventHappening = false;
     float timer;            //how long event lasts for
-    public float rerollTimer = 0.0f;
+    public float rerollTimer = 10.0f;
     [SerializeField]
     Player player;
+    [SerializeField]
+    ScoreManager scoreManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -26,10 +27,10 @@ public class DisasterManager : MonoBehaviour
                 float i = Random.Range(0.0f, 100f);
                 if (i < 50f)
                 {
-                    Debug.Log("Event Started");
                     player.isInversed = true;
                     timer = 10.0f;
                     isEventHappening = true;
+                    scoreManager.SetEvent("INVERSE CONTROLS!!");
                 }
                 else rerollTimer = 10.0f;
             }
@@ -43,7 +44,7 @@ public class DisasterManager : MonoBehaviour
         {
             player.isInversed = false;
             timer = 0.0f;
-            Debug.Log("Event Ended");
+            scoreManager.SetEvent("");
             rerollTimer = 10.0f;
             isEventHappening = !isEventHappening;
         }
